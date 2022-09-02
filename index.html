@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Project</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar-one"></div>
+        <div class="header">
+            <div class="subheader">
+                <h1 id="title">Library Contents</h1>
+                <img id="flourish" src="images/flourish.png">
+            </div>
+            <div class="book-container">
+                <img id="add-book" src="images/add_book.svg">
+                <div class="new-book-form">
+                    <form action = "" class="form-content" id="my_form">
+                        <label for="book_title">Title:</label>
+                        <input type="text" id="book_title" name="book_title">
+                        <label for="author">Author:</label>
+                        <input type="text" id="author" name="author">
+                        <label for="page_length">Page Length:</label>
+                        <input type="text" id="page_length" name="page_length">
+                        <label for="finished_status">Finished Reading?:</label>
+                        <input type="checkbox" id="finished" name="finished_status">
+                        <button type="button" class="cancel-button">Cancel</button>
+                        <button type="button" type="submit" class="submit-button">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read?</th>
+            </tr>
+            <tbody id="book-table-body"></tbody>
+        </table>
+        <div class="footer">
+            <p>Icons courtesy of <a href="https://freeicons.io/profile/2257">www.wishforge.games</a> on <a href="https://freeicons.io">freeicons.io</a></p>
+        </div>
+        <div class="sidebar-two"></div>
+    </div>
+</body>
+<script type="text/javascript" src="index.js"></script>
+</html>
