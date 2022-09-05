@@ -2,11 +2,11 @@
 
 let myLibrary = []
 
-const $tableBody = document.querySelector("#book-table-body")
-let bookTitle = document.querySelector("#book_title")
-let authorName = document.querySelector("#author")
-let pageLength = document.querySelector("#page_length")
-let readStatus = document.querySelector("#finished")
+const tableBody = document.querySelector("#book-table-body")
+const bookTitle = document.querySelector("#book_title")
+const authorName = document.querySelector("#author")
+const pageLength = document.querySelector("#page_length")
+const readStatus = document.querySelector("#finished")
 
 function addBook(title, author, pages, read) {
   this.title = title
@@ -21,26 +21,62 @@ function addBookToLibrary() {
                                 pageLength.value,
                                 readStatus.checked);
 
-  myLibrary.push(newestBook);
-  resetForm();
-  createLibraryGrid();
+  if (bookTitle.value.length == 0 || authorName.value.length == 0) {
+    alert("Please enter both a Title and Author.");
+  } else {
+    myLibrary.push(newestBook);
+    resetForm();
+    createLibraryGrid();
+  }
+}
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
 }
 
 function createLibraryGrid() {
-  $tableBody.innerHTML = "";
+  removeAllChildNodes(tableBody);
 
-  myLibrary.forEach((book) => {
-      const htmlBook = `
-        <tr>
-          <td>${book.title}</td>
-          <td>${book.author}</td>
-          <td>${book.pages}</td>
-          <td>${book.read}</td>
-        </tr>
-        `;
-      $tableBody.insertAdjacentHTML("beforeend", htmlBook);
+  myLibrary.forEach((book, index) => {
+      const row = document.createElement('tr')
+
+      const titleTd = document.createElement('td')
+      titleTd.innerText = book.title
+      row.append(titleTd);
+
+      const authorTd = document.createElement('td')
+      authorTd.innerText = book.author
+      row.append(authorTd);
+
+      const pageTd = document.createElement('td')
+      pageTd.innerText = book.pages
+      row.append(pageTd);
+
+      const readTd = document.createElement('td')
+      readTd.innerText = book.read
+      row.append(readTd);
+
+      const changeTd = document.createElement('td')
+      changeTd.innerText = "I'm going to use the index!"
+      row.append(changeTd)
+
+      const deleteTd = document.createElement('td')
+      deleteTd.innerText = "Another function that uses"
+      row.append(deleteTd)
+
+      const endRow = document.createElement('tr')
+      row.append(endRow);
+
+      tableBody.append(row);
     });
   }
+
+
+function createDeleteButton(value) {
+  let newButton = document.createElement('button');
+  newButton.src = "images/delete.svg";
+}
 
 function resetForm() {
   bookTitle.value = '';
@@ -51,8 +87,8 @@ function resetForm() {
 
 const popup = document.querySelector(".new-book-form");
 const trigger = document.querySelector(".book-container");
-const closeButton = document.querySelector(".cancel-button");
-const submitButton = document.querySelector(".submit-button");
+const closeButton = document.querySelector("#cancel-button");
+const submitButton = document.querySelector("#submit-button");
 
 function togglePopup() {
   popup.classList.toggle("show-popup");

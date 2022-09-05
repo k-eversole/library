@@ -19,16 +19,26 @@
                 <img id="add-book" src="images/add_book.svg">
                 <div class="new-book-form">
                     <form action = "" class="form-content" id="my_form">
-                        <label for="book_title">Title:</label>
-                        <input type="text" id="book_title" name="book_title">
-                        <label for="author">Author:</label>
-                        <input type="text" id="author" name="author">
-                        <label for="page_length">Page Length:</label>
-                        <input type="text" id="page_length" name="page_length">
-                        <label for="finished_status">Finished Reading?:</label>
-                        <input type="checkbox" id="finished" name="finished_status">
-                        <button type="button" class="cancel-button">Cancel</button>
-                        <button type="button" type="submit" class="submit-button">Submit</button>
+                        <h2 id="form-title">Add a Book</h2>
+                        <div id="form-one">
+                            <label for="book_title">Title:</label>
+                            <input type="text" id="book_title" name="book_title">
+                        </div>
+                        <div id="form-two">
+                            <label for="author">Author:</label>
+                            <input type="text" id="author" name="author">
+                        </div>
+                        <div id="form-three">
+                            <label for="page_length">Page Length:</label>
+                            <input type="text" id="page_length" name="page_length">
+                        </div>
+                        <div id="form-four">
+                            <label for="finished_status">Read:</label>
+                            <br>
+                            <input type="checkbox" id="finished" name="finished_status">
+                        </div>
+                        <button type="button" class="form-button" id="cancel-button">Cancel</button>
+                        <button type="button" type="submit" class="form-button" id="submit-button">Submit</button>
                     </form>
                 </div>
             </div>
@@ -39,6 +49,8 @@
                 <th>Author</th>
                 <th>Pages</th>
                 <th>Read?</th>
+                <th>(Edit Button)</th>
+                <th>(Delete Button)</th>
             </tr>
             <tbody id="book-table-body"></tbody>
         </table>
