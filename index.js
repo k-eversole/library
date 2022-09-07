@@ -61,6 +61,10 @@ function createLibraryGrid() {
       const changeButton = document.createElement('button')
       changeButton.class = "change-button"
       changeButton.innerText = "mark read/unread"
+      changeButton.addEventListener("click", () => {
+        (myLibrary[index].read) = (!myLibrary[index].read);
+        createLibraryGrid();
+      });
       changeTd.append(changeButton);
       row.append(changeTd);
 
