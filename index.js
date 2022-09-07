@@ -54,16 +54,26 @@ function createLibraryGrid() {
       row.append(pageTd);
 
       const readTd = document.createElement('td')
-      readTd.innerText = book.read
+      book.read ? readTd.innerText = "yes" : readTd.innerText = "no";
       row.append(readTd);
 
       const changeTd = document.createElement('td')
-      changeTd.innerText = "I'm going to use the index!"
-      row.append(changeTd)
+      const changeButton = document.createElement('button')
+      changeButton.class = "change-button"
+      changeButton.innerText = "mark read/unread"
+      changeTd.append(changeButton);
+      row.append(changeTd);
 
       const deleteTd = document.createElement('td')
-      deleteTd.innerText = "Another function that uses"
-      row.append(deleteTd)
+      const deleteButton = document.createElement('img')
+      deleteButton.className = "delete-button"
+      deleteButton.src = "images/delete.svg"
+      deleteButton.addEventListener("click", () => {
+        myLibrary.splice(index, 1);
+        createLibraryGrid();
+      });
+      deleteTd.append(deleteButton);
+      row.append(deleteTd);
 
       const endRow = document.createElement('tr')
       row.append(endRow);
@@ -72,11 +82,10 @@ function createLibraryGrid() {
     });
   }
 
-
-function createDeleteButton(value) {
-  let newButton = document.createElement('button');
-  newButton.src = "images/delete.svg";
-}
+  function deleteBook(value) {
+    myLibrary.splice(value, 1)
+    createLibraryGrid();
+  }
 
 function resetForm() {
   bookTitle.value = '';
